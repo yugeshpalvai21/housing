@@ -1,4 +1,7 @@
 class HousesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :autherize_manager, only: [:new, :create, :edit, :update, :destroy]
+  
   def index
     @houses = House.order('created_at DESC')
   end
@@ -44,5 +47,11 @@ class HousesController < ApplicationController
 
   def house_params
     params.require(:house).permit(:owner, :address, :rooms, :sqmt, :floors, :air_cond, :price)
+  end
+
+  def autherize_manager
+    unless current_user.manager
+      redirect_to root_path, notice: 'Restricted Action'
+    end
   end
 end
