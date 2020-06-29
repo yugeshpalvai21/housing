@@ -1,0 +1,42 @@
+<%= form_with(model: complex_building, local: true) do |form| %>
+  <% if complex_building.errors.any? %>
+    <div>
+      <h2><%= pluralize(complex_building.errors.count, "error") %> prohibited this complex_building from being saved:</h2>
+
+      <ul>
+      <% complex_building.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :owner %>
+    <%= form.text_field :owner %>
+  </div>
+
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div>
+    <%= form.label :units %>
+    <%= form.number_field :units %>
+  </div>
+
+  <div>
+    <%= form.label :sqmt %>
+    <%= form.number_field :sqmt %>
+  </div>
+
+  <div>
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
