@@ -1,0 +1,42 @@
+<%= form_with(model: commercial_unit, local: true) do |form| %>
+  <% if commercial_unit.errors.any? %>
+    <div>
+      <h2><%= pluralize(commercial_unit.errors.count, "error") %> prohibited this commercial_unit from being saved:</h2>
+
+      <ul>
+      <% commercial_unit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :owner %>
+    <%= form.text_field :owner %>
+  </div>
+
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div>
+    <%= form.label :shops %>
+    <%= form.number_field :shops %>
+  </div>
+
+  <div>
+    <%= form.label :parking %>
+    <%= form.number_field :parking %>
+  </div>
+
+  <div>
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
