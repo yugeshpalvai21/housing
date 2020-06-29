@@ -1,4 +1,7 @@
 class ComplexBuildingsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :autherize_manager, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     @complex_buildings = ComplexBuilding.order('created_at DESC')
   end
@@ -44,5 +47,11 @@ class ComplexBuildingsController < ApplicationController
 
   def complex_building_params
     params.require(:complex_building).permit(:owner, :address, :units, :sqmt, :price)
+  end
+
+  def autherize_manager
+    unless current_user.manager
+      redirect_to root_path, notice: 'Restricted Action'
+    end
   end
 end
