@@ -49,6 +49,7 @@ class CommercialUnitsController < ApplicationController
     else
       @commercial_unit = CommercialUnit.find(params[:id])
       very_long_task
+      NotificationMailer.send_notification(@commercial_unit.owner, current_user.email)
       redirect_to @commercial_unit, notice: 'Congratulations on Your New House!!!'
     end
   end

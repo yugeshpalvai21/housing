@@ -49,6 +49,7 @@ class ComplexBuildingsController < ApplicationController
     else
       @complex_building = ComplexBuilding.find(params[:id])
       very_long_task
+      NotificationMailer.send_notification(@complex_building.owner, current_user.email)
       redirect_to @complex_building, notice: 'Congratulations on Your New House!!!'
     end
   end

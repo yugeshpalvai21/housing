@@ -49,6 +49,7 @@ class HousesController < ApplicationController
     else
       @house = House.find(params[:id])
       very_long_task
+      NotificationMailer.send_notification(@house.owner, current_user.email).deliver_now
       redirect_to @house, notice: 'Congratulations on Your New House!!!'
     end
   end
