@@ -46,7 +46,7 @@ class HousesController < ApplicationController
   private
 
   def house_params
-    params.require(:house).permit(:owner, :address, :rooms, :sqmt, :floors, :air_cond, :price)
+    params.require(:house).permit(:owner, :address, :rooms, :sqmt, :floors, :air_cond, :price, :image)
   end
 
   def autherize_manager

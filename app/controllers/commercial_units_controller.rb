@@ -46,7 +46,7 @@ class CommercialUnitsController < ApplicationController
   private
 
   def commercial_unit_params
-    params.require(:commercial_unit).permit(:owner, :address, :shops, :parking, :price)
+    params.require(:commercial_unit).permit(:owner, :address, :shops, :parking, :price, :image)
   end
 
   def autherize_manager
