@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'home#welcome'
   resources :houses
   resources :complex_buildings
   resources :commercial_units
