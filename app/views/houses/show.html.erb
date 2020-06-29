@@ -1,2 +1,14 @@
-<h1>Houses#show</h1>
-<p><%= @house.inspect %></p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <%= image_tag @house.image, width: '100%', height: '500px' %>
+        </div>
+        <div class="col-md-6">
+            <h5><%= number_to_currency @house.price%></h5>
+            <p><%= @house.address %></p>
+            <p>
+                <%= link_to "Buy Home", buy_house_path(@house), class: 'btn btn-primary btn-lg' %>
+            </p>
+        </div>
+    </div>
+</div>

@@ -4,7 +4,7 @@
     <div class="row">
         <% @houses.each do |house| %>
             <div class="col-md-4">
-                <%= image_tag house.image, width: '100%', height: '250px' %>
+                <%= link_to (image_tag house.image, width: '100%', height: '250px'), house %>
                 <h5><%= number_to_currency house.price%></h5>
                 <p><%= house.address %></p>
             </div>
@@ -15,7 +15,7 @@
     <div class="row">
         <% @complex_buildings.each do |complex_building| %>
             <div class="col-md-4">
-                <%= image_tag complex_building.image, width: '100%', height: '250px' %>
+                <%= link_to (image_tag complex_building.image, width: '100%', height: '250px'), complex_building %>
                 <h5><%= number_to_currency complex_building.price%></h5>
                 <p><%= complex_building.address %></p>
             </div>
@@ -26,7 +26,7 @@
     <div class="row">
         <% @commercial_units.each do |commercial_unit| %>
             <div class="col-md-4">
-                <%= image_tag commercial_unit.image, width: '100%', height: '250px' %>
+                <%= link_to (image_tag commercial_unit.image, width: '100%', height: '250px'), commercial_unit %>
                 <h5><%= number_to_currency commercial_unit.price%></h5>
                 <p><%= commercial_unit.address %></p>
             </div>
