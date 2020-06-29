@@ -1,2 +1,11 @@
-<h1>Houses#index</h1>
-<p>Houses Count - <%= @houses.count %></p>
+<h1>Houses For Sale</h1>
+<hr>
+<div class="row">
+    <% @houses.each do |house| %>
+        <div class="col-md-4">
+            <%= link_to (image_tag house.image, width: '100%', height: '250px'), house %>
+            <h5><%= number_to_currency house.price%></h5>
+            <p><%= house.address %></p>
+        </div>
+    <% end %>
+</div>
