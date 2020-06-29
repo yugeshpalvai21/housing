@@ -1,5 +1,5 @@
 class ComplexBuildingsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :buy]
   before_action :autherize_manager, only: [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -43,6 +43,16 @@ class ComplexBuildingsController < ApplicationController
     redirect_to houses_path, notice: 'House Removed Successfully'
   end
 
+  def buy
+    if current_user.manager
+      redirect_to root_path, notice: 'As a Manager youre not allowed to buy this home'
+    else
+      @complex_building = ComplexBuilding.find(params[:id])
+      very_long_task
+      redirect_to @complex_building, notice: 'Congratulations on Your New House!!!'
+    end
+  end
+
   private
 
   def complex_building_params
@@ -53,5 +63,10 @@ class ComplexBuildingsController < ApplicationController
     unless current_user.manager
       redirect_to root_path, notice: 'Restricted Action'
     end
+  end
+
+  def very_long_task
+    sleep 60
+    true
   end
 end

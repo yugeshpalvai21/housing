@@ -1,5 +1,5 @@
 class CommercialUnitsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :buy]
   before_action :autherize_manager, only: [:new, :create, :edit, :update, :destroy]
   
   def index
@@ -43,6 +43,16 @@ class CommercialUnitsController < ApplicationController
     redirect_to commercial_units_path, notice: 'Commercial Unit Removed Successfully'
   end
 
+  def buy
+    if current_user.manager
+      redirect_to root_path, notice: 'As a Manager youre not allowed to buy this home'
+    else
+      @commercial_unit = CommercialUnit.find(params[:id])
+      very_long_task
+      redirect_to @commercial_unit, notice: 'Congratulations on Your New House!!!'
+    end
+  end
+
   private
 
   def commercial_unit_params
@@ -53,5 +63,10 @@ class CommercialUnitsController < ApplicationController
     unless current_user.manager
       redirect_to root_path, notice: 'Restricted Action'
     end
+  end
+
+  def very_long_task
+    sleep 60
+    true
   end
 end

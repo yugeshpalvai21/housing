@@ -1,2 +1,14 @@
-<h1>ComplexBuildings#show</h1>
-<p><%= @complex_building.inspect %>/p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <%= image_tag @complex_building.image, width: '100%', height: '500px' %>
+        </div>
+        <div class="col-md-6">
+            <h5><%= number_to_currency @complex_building.price%></h5>
+            <p><%= @complex_building.address %></p>
+            <p>
+                <%= link_to "Buy Home", buy_complex_building_path(@complex_building), class: 'btn btn-primary btn-lg' %>
+            </p>
+        </div>
+    </div>
+</div>
