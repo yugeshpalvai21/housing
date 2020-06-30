@@ -45,7 +45,7 @@ class CommercialUnitsController < ApplicationController
     else
       set_commercial_unit
       very_long_task
-      NotificationMailer.send_notification(@commercial_unit.owner, current_user.email)
+      NotificationMailer.send_notification(@commercial_unit.owner, current_user.email).deliver_now
       redirect_to @commercial_unit, notice: 'Congratulations on Your New House!!!'
     end
   end

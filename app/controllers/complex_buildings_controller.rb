@@ -46,7 +46,7 @@ class ComplexBuildingsController < ApplicationController
     else
       set_complex_building
       very_long_task
-      NotificationMailer.send_notification(@complex_building.owner, current_user.email)
+      NotificationMailer.send_notification(@complex_building.owner, current_user.email).deliver_now
       redirect_to @complex_building, notice: 'Congratulations on Your New House!!!'
     end
   end
