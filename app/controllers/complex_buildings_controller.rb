@@ -68,7 +68,7 @@ class ComplexBuildingsController < ApplicationController
   end
 
   def very_long_task
-    sleep 30
+    sleep 60
     true
   end
 end
