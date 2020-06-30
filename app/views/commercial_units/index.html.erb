@@ -1,9 +1,9 @@
-<h1>Commercial Units For Sale</h1>
+<h1 align="center">Commercial Units For Sale</h1>
 <hr>
 <div class="row">
     <% @commercial_units.each do |commercial_unit| %>
         <div class="col-md-4">
-            <%= link_to (image_tag commercial_unit.image, width: '100%', height: '250px'), commercial_unit %>
+            <%= link_to (image_tag commercial_unit.image, width: '100%', height: '250px', class: 'rounded'), commercial_unit %>
             <h5><%= number_to_currency commercial_unit.price%></h5>
             <p><%= commercial_unit.address %></p>
         </div>
