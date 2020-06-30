@@ -1,14 +1,26 @@
-<div class="container">
+<div class="container" style="margin-top:15px;">
     <div class="row">
         <div class="col-md-6">
             <%= image_tag @commercial_unit.image, width: '100%', height: '500px' %>
         </div>
         <div class="col-md-6">
-            <h5><%= number_to_currency @commercial_unit.price%></h5>
-            <p><%= @commercial_unit.address %></p>
+            <h1 align="center">Commercial Unit Details</h1><hr>
+            <p>Owner: <%= @commercial_unit.owner %></p>
+            <p>Address: <%= @commercial_unit.address %></p>
+            <p>Shops: <%= @commercial_unit.shops %></p>
+            <p>Sqmt: <%= @commercial_unit.sqmt %></p>
+            <p>Parking: <%= @commercial_unit.parking %></p>
+            <p>Price: <%= number_to_currency @commercial_unit.price %></p>
             <p>
                 <%= link_to "Buy Home", buy_commercial_unit_path(@commercial_unit), class: 'btn btn-primary btn-lg' %>
             </p>
+            <% if user_signed_in? && current_user.manager %>
+                <hr>
+                <p>
+                    <%= link_to "Edit Commercial Unit Details", edit_commercial_unit_path(@commercial_unit), class: 'btn btn-info'%>
+                    <%= link_to "Delete This Asset", commercial_unit_path(@commercial_unit), method: :delete, data: {confirm: 'Are You Sure?'}, class: 'btn btn-danger' %>
+                </p>
+            <% end %>
         </div>
     </div>
 </div>
