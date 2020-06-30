@@ -67,7 +67,7 @@ class CommercialUnitsController < ApplicationController
   end
 
   def very_long_task
-    sleep 60
+    sleep 30
     true
   end
 end
